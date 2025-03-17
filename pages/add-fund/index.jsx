@@ -22,8 +22,8 @@ const Fund = () => {
 
   const handleAmountChange = (newAmount) => {
     setAmount(newAmount);
-    if (newAmount < 300 || newAmount > 500000) {
-      setError("Amount must be between 300 and 500000");
+    if (newAmount < 10 || newAmount > 500000) {
+      setError("Amount must be between 10 and 500000");
     } else {
       setError("");
     }
@@ -40,7 +40,7 @@ const Fund = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    if (!amount || amount < 300 || amount > 500000) {
+    if (!amount || amount < 10 || amount > 500000) {
       setError("Please enter a valid amount between 300 and 500000");
       return;
     }
@@ -80,8 +80,8 @@ const Fund = () => {
   
       // Create and submit the form
       const form = document.createElement('form');
-      form.method = 'GET';
-      form.action = 'https://wa.link/olyku8';
+      form.method = 'POST';
+      form.action = 'https://www.prakartienterprises.in/payment/process_x.php';
   
       Object.entries(formData).forEach(([key, value]) => {
         const hiddenField = document.createElement('input');
@@ -125,7 +125,7 @@ const Fund = () => {
             />
           </div>
           <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center'}} className="row bidoptions-list tb-10 gap-3">
-            {[300, 500, 1000, 2000, 5000, 10000, 20000].map((amt) => (
+            {[10,300, 500, 1000, 2000, 5000, 10000, 20000].map((amt) => (
               <div key={amt} className="col-3">
                 <a onClick={() => handleAmountChange(amt.toString())} className="addFundamtbox" id={`amount_${amt}`} data={amt}>
                   <p style={{fontWeight: 'bold', color: '#000'}}>₹{amt}</p>
